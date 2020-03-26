@@ -50,7 +50,8 @@ router.get('/users/:id/avatar', async (req, res) => {
 })
 
 router.post('/users', async (req, res) => {
-    const user = new User(req.body)
+    const { name, email, password } = req.body
+    const user = new User({ name, email, password })
 
     try {
         if (!user) return res.status(401).send()
